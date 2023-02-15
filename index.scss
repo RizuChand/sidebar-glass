@@ -1,0 +1,169 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,700&display=swap');
+
+$width : 350px;
+$small-width : 105px;
+
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.sidebar {
+    $sidebar : &;
+    width: $width;
+    height: calc(100vh - 60px);
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    border: 1px solid rgb(199, 198, 198);
+    box-shadow: 0 0 40px -20px black;
+    backdrop-filter: blur(10px);
+    color: white;
+    text-shadow: 1px 1px 0 black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all .3s;
+
+    @media (max-width : 400px) {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 30px;
+        position: relative;
+
+        .profileImg{
+            width: 120px;
+            height: 120px;
+            display: table;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px black;
+            margin: 0 auto;
+            transition: width .3s, height .3s;
+        }
+
+    &-title {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        white-space: pre;
+        transition: scale .3s;
+        font-weight: 700;
+
+
+    }
+    .sidebar-toggle {
+        background-color: white;
+        color: black;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        border: 5px black;
+        position: absolute;
+        top: 15px;
+        right: -15px;
+
+        @media (max-width: 600px) {
+            display: none;
+            }
+        }
+    }
+
+    &-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 5px;
+        transition: padding .3s;
+        border-radius: 100px;
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 12px;
+
+
+            &.active,
+             &:hover {
+                background: rgba(255, 255, 255, .15);
+                border-radius: 50px;
+            }
+        }
+        span {
+            transition: scale .3s;
+        }
+        i {
+            font-size: 24px;
+            transition: scale .3s;
+        }
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: end;
+        flex-direction: column;
+        padding-bottom: 30px;
+    }
+
+    &-small {
+        width: $small-width;
+        #{$sidebar}-header {
+            .profileImg {
+                height: 60px;
+                width: 60px;
+            }
+
+            &-title {
+                scale: 0;
+
+            }
+            .sidebar-toggle {
+                transform: rotate(180deg);
+            }
+        }
+
+        #{$sidebar}-menu {
+            padding: 0 10px;
+
+            a {
+                gap: 0;
+
+                i {
+                    scale: 1.2;
+                }
+
+                span {
+                    scale: 0;
+                }
+            }
+        }
+    }
+
+}
+
+
